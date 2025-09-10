@@ -1,0 +1,10 @@
+class numero:
+    def __init__(self, n):
+        self.numeron=n
+    def cuadrado(self):
+        return self.numeron**2
+    def cubo(self):
+        return self.numeron**3
+numerou=int(input("digite el numero: "))
+resultado=numero(numerou)
+print(f'el numero es {resultado.numeron} cuadrado es {resultado.cuadrado()} cubo es {resultado.cubo()}')
