@@ -1,0 +1,111 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyOkBIapqrQi55YlQ7+6/eoS",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/svelasquezso-pixel/trabajos_poo/blob/main/trabajo4_2\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "Mynzkng3QBOi"
+      },
+      "outputs": [],
+      "source": [
+        "import tkinter as tk\n",
+        "from tkinter import messagebox\n",
+        "root = tk.Tk()\n",
+        "root.geometry(\"500x500\")\n",
+        "\n",
+        "class promedio:\n",
+        "    def __init__(self, n1, n2, n3):\n",
+        "        self.promedio = (n1 + n2 + n3) / 3\n",
+        "    def __str__(self):\n",
+        "        return f'El promedio es: {self.promedio}'\n",
+        "\n",
+        "def calcular_promedio():\n",
+        "    global control\n",
+        "    control=0\n",
+        "    try:\n",
+        "        n1 = float(numero1.get())\n",
+        "        if n1<0 or n1>5:\n",
+        "            raise ValueError(\"El numero 1 tiene que estar entre (0,5)\")\n",
+        "    except ValueError as e:\n",
+        "        if \"could not convert\" in str(e):\n",
+        "            messagebox.showerror(\"Error\", \"Nota 1 Debe ser un número\")\n",
+        "            numero1.delete(0, tk.END)\n",
+        "            control=control+1\n",
+        "        else:\n",
+        "            messagebox.showerror(\"Error\", e)\n",
+        "            numero1.delete(0, tk.END)\n",
+        "            control=control+1\n",
+        "\n",
+        "    try:\n",
+        "        n2 = float(numero2.get())\n",
+        "        if n2<0 or n2>5:\n",
+        "            raise ValueError(\"El numero 2 tiene que estar entre (0,5)\")\n",
+        "    except ValueError as e:\n",
+        "        if \"could not convert\" in str(e):\n",
+        "            messagebox.showerror(\"Error\", \"Nota 2: Debe ser un número\")\n",
+        "            numero2.delete(0, tk.END)\n",
+        "            control=control+1\n",
+        "        else:\n",
+        "            messagebox.showerror(\"Error\", e)\n",
+        "            numero2.delete(0, tk.END)\n",
+        "            control=control+1\n",
+        "\n",
+        "    try:\n",
+        "        n3 = float(numero3.get())\n",
+        "        if n3<0 or n3>5:\n",
+        "            raise ValueError(\"El numero 3 tiene que estar entre (0,5)\")\n",
+        "    except ValueError as e:\n",
+        "        if \"could not convert\" in str(e):\n",
+        "            messagebox.showerror(\"Error\", \"Nota 3: Debe ser un número\")\n",
+        "            numero3.delete(0, tk.END)\n",
+        "            control=control+1\n",
+        "        else:\n",
+        "            messagebox.showerror(\"Error\", e)\n",
+        "            numero3.delete(0, tk.END)\n",
+        "            control=control+1\n",
+        "\n",
+        "    if control==0:\n",
+        "        hola = promedio(n1, n2, n3)\n",
+        "        resultado = tk.Entry(root)\n",
+        "        resultado.pack()\n",
+        "        resultado.insert(0,hola)\n",
+        "control=0\n",
+        "numero1 = tk.Entry(root)\n",
+        "numero1.pack()\n",
+        "numero2 = tk.Entry(root)\n",
+        "numero2.pack()\n",
+        "numero3 = tk.Entry(root)\n",
+        "numero3.pack()\n",
+        "boton = tk.Button(root, text=\"Promedio\", command=calcular_promedio)\n",
+        "boton.pack()\n",
+        "root.mainloop()"
+      ]
+    }
+  ]
+}
